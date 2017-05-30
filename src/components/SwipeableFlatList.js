@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList } from 'react-native';
+import { FlatList, PanResponder, View } from 'react-native';
 
 import SwipeableListItem from './SwipeableListItem';
 
@@ -20,13 +20,7 @@ export default class SwipeableFlatList extends Component {
 		backgroundColor: '#fff',
 	};
 
-	state = {};
-
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
+	render = () => {
 		const {
 			data,
 			renderItem,
@@ -40,8 +34,8 @@ export default class SwipeableFlatList extends Component {
 				renderItem={({ item }) =>
 					<SwipeableListItem
 						item={renderItem({ item })}
-						left={renderLeft({ item })}
-						right={renderRight({ item })}
+						left={renderLeft && renderLeft({ item })}
+						right={renderRight && renderRight({ item })}
 						backgroundColor={backgroundColor}
 					/>
 				}
