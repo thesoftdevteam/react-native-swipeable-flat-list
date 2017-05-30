@@ -39,6 +39,8 @@ export default class SwipeableListItem extends Component {
 		swipeCloseThresholdPercentage: PropTypes.number,
 		friction: PropTypes.number,
 		tension: PropTypes.number,
+		onOpen: PropTypes.func,
+		onClose: PropTypes.func,
 	};
 
 	static defaultProps = {
@@ -209,6 +211,7 @@ export default class SwipeableListItem extends Component {
 			tension,
 			onOpen,
 		} = this.props;
+		onOpen && onOpen(this);
 		Animated.spring(
 			swipeValue,
 			{
@@ -261,6 +264,7 @@ export default class SwipeableListItem extends Component {
 				swipeValue = swipeValueRight;
 			}
 		}
+		onClose && onClose();
 		Animated.spring(
 			swipeValue,
 			{

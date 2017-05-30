@@ -20,6 +20,21 @@ export default class SwipeableFlatList extends Component {
 		backgroundColor: '#fff',
 	};
 
+	_itemRef = undefined;
+
+	handleOpenChild = (ref) => {
+		this._itemRef && this._itemRef.close();
+		this._itemRef = ref;
+	}
+
+	handleCloseChild = () => {
+		this._itemRef = undefined;
+	}
+
+	handleScroll = () => {
+		this._itemRef && this._itemRef.close();
+	}
+
 	render = () => {
 		const {
 			data,
@@ -37,8 +52,11 @@ export default class SwipeableFlatList extends Component {
 						left={renderLeft && renderLeft({ item })}
 						right={renderRight && renderRight({ item })}
 						backgroundColor={backgroundColor}
+						onOpen={this.handleOpenChild}
+						onClose={this.handleCloseChild}
 					/>
 				}
+				onScroll={this.handleScroll}
 			/>
 		);
 	}
