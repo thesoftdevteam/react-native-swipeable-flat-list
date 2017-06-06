@@ -13,7 +13,8 @@ export default class SwipeableFlatList extends Component {
 		renderItem: PropTypes.func.isRequired,
 		renderLeft: PropTypes.func,
 		renderRight: PropTypes.func,
-		backgroundColor: PropTypes.string,
+		itemBackgroundColor: PropTypes.string,
+		style: FlatList.propTypes.style,
 	};
 
 	static defaultProps = {
@@ -41,22 +42,25 @@ export default class SwipeableFlatList extends Component {
 			renderItem,
 			renderLeft,
 			renderRight,
-			backgroundColor,
+			itemBackgroundColor,
+			style,
 		} = this.props;
 		return (
 			<FlatList
+				{...this.props}
 				data={data}
 				renderItem={({ item }) =>
 					<SwipeableListItem
 						item={renderItem({ item })}
 						left={renderLeft && renderLeft({ item })}
 						right={renderRight && renderRight({ item })}
-						backgroundColor={backgroundColor}
+						backgroundColor={itemBackgroundColor}
 						onOpen={this.handleOpenChild}
 						onClose={this.handleCloseChild}
 					/>
 				}
 				onScroll={this.handleScroll}
+				style={style}
 			/>
 		);
 	}
