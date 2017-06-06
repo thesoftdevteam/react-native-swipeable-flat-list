@@ -103,9 +103,13 @@ The left element, which is hidden beneath the main element and revealed on swipi
 
 type: `element`
 
+**NOTE:** The element's `style.width` has to be set in order for it to be able to open.
+
 #### `right`
 
 The right element, which is hidden beneath the main element and revealed on swiping to the left.
+
+**NOTE:** The element's `style.width` has to be set in order for it to be able to open.
 
 type: `element`
 
