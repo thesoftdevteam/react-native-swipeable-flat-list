@@ -14,7 +14,6 @@ export default class SwipeableFlatList extends Component {
 		renderLeft: PropTypes.func,
 		renderRight: PropTypes.func,
 		itemBackgroundColor: PropTypes.string,
-		style: FlatList.propTypes.style,
 	};
 
 	static defaultProps = {
