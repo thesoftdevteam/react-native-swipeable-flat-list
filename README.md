@@ -26,7 +26,7 @@ render() {
 		<SwipeableFlatList
 			data={data}
 			renderItem={({ item }) => (
-				<Text>{item.label}</Text>
+				<Text style={{ height: 48 }}>{item.label}</Text>
 			)}
 			renderLeft={({ item }) => (
 				<Text style={{ width: 40 }}>{item.leftLabel}</Text>
@@ -39,6 +39,16 @@ render() {
 	)
 }
 ```
+
+# Example
+
+```
+cd example
+yarn
+react-native run-*
+```
+
+**NOTE**: I haven't been able to test under iOS, yet.
 
 # API
 
@@ -96,6 +106,8 @@ A ListItem to be used with SwipeableFlatList.
 The main element, which lies above the left and/or the right element.
 
 type: `element`
+
+**NOTE:** The element's `style.height` has to be set in order to be able to set the height of the SwipeableListItem.
 
 #### `left`
 
