@@ -303,10 +303,12 @@ export default class SwipeableListItem extends Component {
 			swipeState,
 		} = this.state;
 		const swipeAction = swipeDirection + swipeState;
+		const { height } = item.props.style;
 		return (
 			<View
 				style={{
 					backgroundColor,
+					height,
 				}}
 			>
 				<View
@@ -314,34 +316,14 @@ export default class SwipeableListItem extends Component {
 						flexDirection: 'row',
 					}}
 				>
-					{left && (
-						<View
-							style={{
-								width: left.props.style.width,
-								justifyContent: 'flex-start',
-								backgroundColor,
-							}}
-						>
-							{left}
-						</View>
-					)}
+					{left}
 					<View
 						style={{
 							flex: 1,
 							backgroundColor,
 						}}
 					/>
-					{right && (
-						<View
-							style={{
-								width: right.props.style.width,
-								justifyContent: 'flex-end',
-								backgroundColor,
-							}}
-						>
-							{right}
-						</View>
-					)}
+					{right}
 				</View>
 				<Animated.View
 					{...this._panResponder.panHandlers}
