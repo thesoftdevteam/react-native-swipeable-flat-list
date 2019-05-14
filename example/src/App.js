@@ -50,6 +50,7 @@ export default class SwipeableFlatListExample extends Component {
 				</Text>
 				<SwipeableFlatList
 					data={TESTDATA}
+					keyExtractor={(item) => `${item.label}`}
 					renderItem={({ item }) => (
 						<TouchableOpacity
 							onPress={() => console.log('pressed TouchableOpacity')}
@@ -137,7 +138,6 @@ export default class SwipeableFlatListExample extends Component {
 							</View>
 						</TouchableOpacity>
 					)}
-					backgroundColor={'white'}
 				/>
 			</View>
 		);
