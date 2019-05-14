@@ -20,19 +20,22 @@ export default class SwipeableFlatList extends Component {
 		backgroundColor: '#fff',
 	};
 
-	_itemRef = undefined;
+	constructor(props) {
+		super(props);
+		this._itemRef = React.createRef();
+	}
 
-	handleOpenChild = (ref) => {
-		this._itemRef && this._itemRef.close();
+	_handleOpenChild = (ref) => {
+		this._itemRef.?current?.close?.();
 		this._itemRef = ref;
 	}
 
-	handleCloseChild = () => {
+	_handleCloseChild = () => {
 		this._itemRef = undefined;
 	}
 
-	handleScroll = () => {
-		this._itemRef && this._itemRef.close();
+	_handleScroll = () => {
+		this._itemRef?.close?.();
 	}
 
 	render = () => {
@@ -54,12 +57,11 @@ export default class SwipeableFlatList extends Component {
 						left={renderLeft && renderLeft({ item })}
 						right={renderRight && renderRight({ item })}
 						backgroundColor={itemBackgroundColor}
-						onOpen={this.handleOpenChild}
-						onClose={this.handleCloseChild}
+						onOpen={this._handleOpenChild}
+						onClose={this._handleCloseChild}
 					/>
 				}
-				onScroll={this.handleScroll}
-				style={style}
+				onScroll={this._handleScroll}
 			/>
 		);
 	}
