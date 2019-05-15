@@ -34,22 +34,25 @@ export default class SwipeableFlatList extends Component {
 		this._itemRef = undefined;
 	}
 
-	_handleScroll = () => {
+	_handleScroll = (event) => {
+		const { onScroll } = this.props;
 		this._itemRef?.close?.();
+		onScroll?.(event);
 	}
 
 	render = () => {
 		const {
 			data,
+			itemBackgroundColor,
+			onScroll,
 			renderItem,
 			renderLeft,
 			renderRight,
-			itemBackgroundColor,
-			style,
+			...otherProps
 		} = this.props;
 		return (
 			<FlatList
-				{...this.props}
+				{...otherProps}
 				data={data}
 				renderItem={({ item }) =>
 					<SwipeableListItem
